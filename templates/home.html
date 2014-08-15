@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}       
+Insert Tasks
+{% endblock %}
+
+{% block content %}
+<form action="{{ uri_for('trigger_tasks') }}" method="post">
+
+  <span>{{message}}</span>
+  <br />
+
+  <div>
+    <label for="task_count">Number of Tasks:</label>
+    <input type="number" id="task_count" name="task_count" step="any" min="1" 
+      max="10000">
+  </div>
+
+  <div>
+    <label for="batch_size">Batch Size (0 is no batches):</label>
+    <input type="number" id="batch_size" name="batch_size" step="any" min="0" 
+      max="100">
+  </div>
+
+  <div>
+    <label for="use_batcher">Use Furious Async Batcher:</label>
+    <input type="checkbox" name="use_batcher" id="use_batcher" />
+  </div>
+  
+  <div>
+    <label for="task_run_time">Task Run Time (how long to sleep the task for):</label>
+    <input type="number" id="task_run_time" name="task_run_time" step="any" min="0" 
+      max="600">
+  </div>
+
+  <div>
+    <label for="queue_name">Queue Name ("default" if not provided):</label>
+    <input type="text" id="queue_name" name="queue_name" >
+  </div>
+
+  <div>
+    <button id="submit_tasks" type="submit">Insert Tasks</button>
+  </div>
+
+</form>
+{% endblock %}

@@ -1,0 +1,27 @@
+application: gaequeuetest
+version: test
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: webob
+  version: latest
+- name: jinja2
+  version: 2.6
+
+builtins:
+- remote_api: on
+
+handlers:
+
+- url: /static/
+  static_dir: static
+  secure: optional
+
+- url: /_ah/queue/async.*
+  script: main.furious_app
+  login: admin
+
+- url: .*
+  script: main.app

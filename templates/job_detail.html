@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}       
+Task Detail - {{ job_id }}
+{% endblock %}
+
+{% block content %}
+<div>
+  <h3>Job Info</h3>
+  <div>
+    Count: <span>{{task_count}}
+  </div>
+  <div>
+    Queue: <span>{{queue}}
+  </div>
+  <div>
+    Created: <span>{{created}}
+  </div>
+  <div>
+    Updated: <span>{{modified}}
+  </div>
+  <div>
+    Finished Tasks: <span>{{finished_ids}}
+  </div>
+  <div>
+    Finished: <span>{{finished}}
+  </div>
+  <div>
+    Error: <span>{{error}}
+  </div>
+</div>
+<div>
+  <h3>Job Latency Stats</h3>
+  <div>
+    Over 2 minutes: <span>{{stats.get("two_minutes")}}
+  </div>
+  <div>
+    Over 1 minute: <span>{{stats.get("one_minute")}}
+  </div>
+  <div>
+    Over 30 seconds: <span>{{stats.get("thirty_seconds")}}
+  </div>
+  <div>
+    Over 10 seconds: <span>{{stats.get("ten_seconds")}}
+  </div>
+  <div>
+    Over 5 seconds: <span>{{stats.get("five_seconds")}}
+  </div>
+  <div>
+    Over 2 seconds: <span>{{stats.get("two_seconds")}}
+  </div>
+<div>
+<!--<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+<!--<script src="/static/detail.js"></script>-->
+{% endblock %}
